@@ -1,4 +1,4 @@
-package by.lazar.weatherapp;
+package by.lazar.weatherapp.utils.current;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

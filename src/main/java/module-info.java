@@ -1,19 +1,14 @@
 module by.lazar.weatherapp {
     requires javafx.controls;
     requires javafx.fxml;
-    requires javafx.web;
-
-    requires org.controlsfx.controls;
-    requires com.dlsc.formsfx;
-    requires net.synedra.validatorfx;
-    requires org.kordamp.ikonli.javafx;
-    requires org.kordamp.bootstrapfx.core;
-    requires eu.hansolo.tilesfx;
-    requires com.almasb.fxgl.all;
-    requires java.net.http;
     requires com.fasterxml.jackson.databind;
+    requires java.net.http;
     requires static lombok;
 
     opens by.lazar.weatherapp to javafx.fxml;
     exports by.lazar.weatherapp;
+    exports by.lazar.weatherapp.utils.current;
+    exports by.lazar.weatherapp.utils.forecast;
+    exports by.lazar.weatherapp.utils;
+    opens by.lazar.weatherapp.utils to javafx.fxml;
 }

@@ -1,4 +1,4 @@
-package by.lazar.weatherapp;
+package by.lazar.weatherapp.utils.current;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -10,6 +10,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Condition {
-    private String text;
+public class Location {
+    private String country;
+    private String name;
+    private String region;
 }

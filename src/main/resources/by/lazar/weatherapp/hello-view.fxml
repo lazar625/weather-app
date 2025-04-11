@@ -4,36 +4,80 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Background?>
+<?import javafx.scene.layout.BackgroundFill?>
+<?import javafx.scene.layout.CornerRadii?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="488.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.lazar.weatherapp.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.lazar.weatherapp.HelloController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5da5e8" height="467.0" layoutX="-16.0" layoutY="-8.0" stroke="BLACK" strokeType="INSIDE" width="509.0" />
-      <TextField fx:id="cityText" layoutX="75.0" layoutY="33.0" prefHeight="25.0" prefWidth="220.0" promptText="Введите город" />
-      <Button fx:id="searchBtn" layoutX="328.0" layoutY="27.0" mnemonicParsing="false" onAction="#onBtnClick" prefHeight="39.0" prefWidth="79.0" text="Найти" />
-      <Text fx:id="mainText" layoutX="46.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите город" wrappingWidth="279.0">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Text>
-      <Text fx:id="tempText" layoutX="328.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="79.0">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Text>
-      <ImageView fx:id="imagCloud" fitHeight="131.0" fitWidth="163.0" layoutX="283.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="cicon" fitHeight="39.0" fitWidth="47.0" layoutX="427.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true" />
-      <Text fx:id="feels" layoutX="75.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="163.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Text fx:id="wind" layoutX="75.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="118.98307228088379">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1a237e" height="600.0" width="1200.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0d47a1" height="600.0" width="1200.0" opacity="0.8" />
+      
+      <HBox spacing="20" AnchorPane.leftAnchor="50" AnchorPane.topAnchor="50">
+         <!-- Левая часть с текущей погодой -->
+         <VBox spacing="20" alignment="CENTER" style="-fx-background-color: rgba(255,255,255,0.1); -fx-background-radius: 20;" prefHeight="450" prefWidth="500">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+               <TextField fx:id="cityText" prefHeight="40.0" prefWidth="300.0" promptText="Введите город" style="-fx-background-radius: 20; -fx-font-size: 16px;" />
+               <Button fx:id="searchBtn" onAction="#onBtnClick" prefHeight="40.0" prefWidth="100.0" text="Найти" style="-fx-background-radius: 20; -fx-font-size: 16px; -fx-background-color: #2196f3; -fx-text-fill: white;" />
+            </HBox>
+            
+            <Text fx:id="mainText" text="Введите город" style="-fx-font-size: 48px; -fx-fill: white;" />
+            <HBox spacing="20" alignment="CENTER">
+               <Text fx:id="tempText" style="-fx-font-size: 72px; -fx-fill: white;" />
+               <ImageView fx:id="imagCloud" fitHeight="100.0" fitWidth="100.0" preserveRatio="true" />
+            </HBox>
+            
+            <HBox spacing="40" alignment="CENTER">
+               <VBox spacing="10" alignment="CENTER">
+                  <Text text="Ощущается как" style="-fx-font-size: 24px; -fx-fill: white;" />
+                  <Text fx:id="feels" style="-fx-font-size: 32px; -fx-fill: white;" />
+               </VBox>
+               
+               <VBox spacing="10" alignment="CENTER">
+                  <Text text="Ветер" style="-fx-font-size: 24px; -fx-fill: white;" />
+                  <Text fx:id="wind" style="-fx-font-size: 32px; -fx-fill: white;" />
+               </VBox>
+            </HBox>
+         </VBox>
+         
+         <!-- Правая часть с прогнозом -->
+         <VBox spacing="20" alignment="CENTER" style="-fx-background-color: rgba(255,255,255,0.1); -fx-background-radius: 20;" prefHeight="450" prefWidth="500">
+            <Text text="Прогноз на 3 дня" style="-fx-font-size: 32px; -fx-fill: white;" />
+            
+            <!-- День 1 -->
+            <HBox spacing="20" alignment="CENTER" style="-fx-background-color: rgba(255,255,255,0.05); -fx-background-radius: 10;" prefWidth="450">
+               <VBox spacing="5" alignment="CENTER">
+                  <Text fx:id="day1" style="-fx-font-size: 24px; -fx-fill: white;" />
+                  <ImageView fx:id="icon1" fitHeight="50.0" fitWidth="50.0" preserveRatio="true" />
+                  <Text fx:id="temp1" style="-fx-font-size: 32px; -fx-fill: white;" />
+               </VBox>
+            </HBox>
+            
+            <!-- День 2 -->
+            <HBox spacing="20" alignment="CENTER" style="-fx-background-color: rgba(255,255,255,0.05); -fx-background-radius: 10;" prefWidth="450">
+               <VBox spacing="5" alignment="CENTER">
+                  <Text fx:id="day2" style="-fx-font-size: 24px; -fx-fill: white;" />
+                  <ImageView fx:id="icon2" fitHeight="50.0" fitWidth="50.0" preserveRatio="true" />
+                  <Text fx:id="temp2" style="-fx-font-size: 32px; -fx-fill: white;" />
+               </VBox>
+            </HBox>
+            
+            <!-- День 3 -->
+            <HBox spacing="20" alignment="CENTER" style="-fx-background-color: rgba(255,255,255,0.05); -fx-background-radius: 10;" prefWidth="450">
+               <VBox spacing="5" alignment="CENTER">
+                  <Text fx:id="day3" style="-fx-font-size: 24px; -fx-fill: white;" />
+                  <ImageView fx:id="icon3" fitHeight="50.0" fitWidth="50.0" preserveRatio="true" />
+                  <Text fx:id="temp3" style="-fx-font-size: 32px; -fx-fill: white;" />
+               </VBox>
+            </HBox>
+         </VBox>
+      </HBox>
    </children>
 </AnchorPane>
