@@ -2,8 +2,12 @@ package by.lazar.weatherapp.utils.forecast;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Getter
+@Setter
 public class ForecastDay {
     private String date;
     
@@ -13,28 +17,5 @@ public class ForecastDay {
     private Day day;
 
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public long getDateEpoch() {
-        return dateEpoch;
-    }
-
-    public void setDateEpoch(long dateEpoch) {
-        this.dateEpoch = dateEpoch;
-    }
-
-    public Day getDay() {
-        return day;
-    }
-
-    public void setDay(Day day) {
-        this.day = day;
-    }
 
 } 

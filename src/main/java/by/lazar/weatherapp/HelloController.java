@@ -44,7 +44,7 @@ public class HelloController {
     @FXML
     private ImageView cicon;
 
-    // Прогноз
+
     @FXML
     private Text day1;
     @FXML
@@ -70,14 +70,14 @@ public class HelloController {
     void onBtnClick(ActionEvent event) throws IOException, InterruptedException {
         String city = cityText.getText();
         
-        // Получаем текущую погоду
+
         Weather weather = req.reqWeather(city);
         if (weather.getCurrent() == null) {
             mainText.setText("Город не найден!");
             return;
         }
         
-        // Обновляем текущую погоду
+
         mainText.setText(city);
         int tmp = (int) weather.getCurrent().getTempC();
         tempText.setText(tmp > 0 ? "+" + tmp : String.valueOf(tmp));
@@ -93,10 +93,10 @@ public class HelloController {
                 break;
         }
 
-        wind.setText("Ветер : " + String.valueOf(weather.getCurrent().getWindKph()) + " км/ч");
-        feels.setText("Ощущается как : " + String.valueOf((int) weather.getCurrent().getFeelslikeC()) + " C");
+        wind.setText(String.valueOf(weather.getCurrent().getWindKph()) + " км/ч");
+        feels.setText(String.valueOf((int) weather.getCurrent().getFeelslikeC()) + " C");
 
-        // Получаем и обновляем прогноз
+
         try {
 
             Forecast forecast = req.getForecast(city);
@@ -108,21 +108,21 @@ public class HelloController {
                 if (forecast.getForecast().getForecastday() != null && forecast.getForecast().getForecastday().size() >= 3) {
 
                     LocalDate date1 = LocalDate.parse(forecast.getForecast().getForecastday().get(0).getDate());
-                    day1.setText(date1.format(formatter));
+                    day1.setText("Сегодня ");
                     temp1.setText(String.valueOf((int) forecast.getForecast().getForecastday().get(0).getDay().getAvgtempC()) + "°C");
                     updateForecastIcon(icon1, forecast.getForecast().getForecastday().get(0).getDay().getCondition().getText());
 
 
 
                     LocalDate date2 = LocalDate.parse(forecast.getForecast().getForecastday().get(1).getDate());
-                    day2.setText(date2.format(formatter));
+                    day2.setText("Завтра");
                     temp2.setText(String.valueOf((int) forecast.getForecast().getForecastday().get(1).getDay().getAvgtempC()) + "°C");
                     updateForecastIcon(icon2, forecast.getForecast().getForecastday().get(1).getDay().getCondition().getText());
 
 
 
                     LocalDate date3 = LocalDate.parse(forecast.getForecast().getForecastday().get(2).getDate());
-                    day3.setText(date3.format(formatter));
+                    day3.setText("Послезавтра");
                     temp3.setText(String.valueOf((int) forecast.getForecast().getForecastday().get(2).getDay().getAvgtempC()) + "°C");
                     updateForecastIcon(icon3, forecast.getForecast().getForecastday().get(2).getDay().getCondition().getText());
 
