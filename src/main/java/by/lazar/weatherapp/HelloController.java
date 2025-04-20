@@ -86,10 +86,10 @@ public class HelloController {
 
         switch (weather.getCurrent().getCondition().getText()) {
             case "Sunny":
-                imagCloud.setImage(new Image("C:\\Users\\lazar\\IdeaProjects\\weather-app\\src\\main\\resources\\images\\2682848_day_forecast_sun_sunny_weather_icon.png"));
+                imagCloud.setImage(new Image( System.getProperty("user.dir")+"\\src\\main\\resources\\images\\2682848_day_forecast_sun_sunny_weather_icon.png"));
                 break;
             case "Partly cloudy":
-                imagCloud.setImage(new Image("C:\\Users\\lazar\\IdeaProjects\\weather-app\\src\\main\\resources\\images\\2682849_cloud_cloudy_day_forecast_sun_icon.png"));
+                imagCloud.setImage(new Image(System.getProperty("user.dir")+"src\\main\\resources\\images\\2682849_cloud_cloudy_day_forecast_sun_icon.png"));
                 break;
         }
 
@@ -139,13 +139,13 @@ public class HelloController {
     private void updateForecastIcon(ImageView icon, String condition) {
         switch (condition) {
             case "Sunny":
-                icon.setImage(new Image("C:\\Users\\lazar\\IdeaProjects\\weather-app\\src\\main\\resources\\images\\2682848_day_forecast_sun_sunny_weather_icon.png"));
+                icon.setImage(new Image(System.getProperty("user.dir")+"\\src\\main\\resources\\images\\2682848_day_forecast_sun_sunny_weather_icon.png"));
                 break;
             case "Partly cloudy":
-                icon.setImage(new Image("C:\\Users\\lazar\\IdeaProjects\\weather-app\\src\\main\\resources\\images\\2682849_cloud_cloudy_day_forecast_sun_icon.png"));
+                icon.setImage(new Image(System.getProperty("user.dir")+"\\src\\main\\resources\\images\\2682849_cloud_cloudy_day_forecast_sun_icon.png"));
                 break;
             default:
-                icon.setImage(new Image("C:\\Users\\lazar\\IdeaProjects\\weather-app\\src\\main\\resources\\images\\2682849_cloud_cloudy_day_forecast_sun_icon.png"));
+                icon.setImage(new Image(System.getProperty("user.dir")+"\\src\\main\\resources\\images\\2682849_cloud_cloudy_day_forecast_sun_icon.png"));
                 break;
         }
     }
